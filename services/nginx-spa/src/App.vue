@@ -9,6 +9,7 @@
       <RouterLink :to="{ name: 'about' }">About</RouterLink>
     </li>
   </ul>
+  <p>{{ $CONFIG.API_URI }}</p>
   <router-view></router-view>
 </template>
 
