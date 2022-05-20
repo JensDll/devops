@@ -1,5 +1,5 @@
 ﻿BeforeAll {
-  Import-Module $PSScriptRoot\..\DevopTools
+  Import-Module $PSScriptRoot\..\DevopTools\DevopTools.psm1 -Force
 }
 
 InModuleScope DevopTools {
