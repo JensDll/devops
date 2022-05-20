@@ -1,12 +1,9 @@
 @{
   # Script module or binary module file associated with this manifest.
-  # RootModule = ''
+  RootModule        = 'DevopTools.psm1'
 
   # Version number of this module.
   ModuleVersion     = '0.0.1'
-
-  # Supported PSEditions
-  # CompatiblePSEditions = @()
 
   # ID used to uniquely identify this module
   GUID              = '0d0e7a69-7247-4979-a599-73850459367e'
@@ -14,14 +11,11 @@
   # Author of this module
   Author            = 'Jens Döllmann'
 
-  # Company or vendor of this module
-  # CompanyName       = 'Unknown'
-
   # Copyright statement for this module
-  Copyright         = '(c) Jens Döllmann. All rights reserved.'
+  Copyright         = 'Copyright (c) 2022 Jens Döllmann'
 
   # Description of the functionality provided by this module
-  # Description = ''
+  Description       = 'Devop tools for PowerShell'
 
   # Minimum version of the PowerShell engine required by this module
   # PowerShellVersion = ''
@@ -60,7 +54,11 @@
   # NestedModules = @()
 
   # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-  FunctionsToExport = @()
+  FunctionsToExport = @(
+    'New-AwsCredentials',
+    'Read-AwsCredentials',
+    'Remove-AwsCredentials'
+  )
 
   # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
   CmdletsToExport   = @()
@@ -75,7 +73,7 @@
   # DscResourcesToExport = @()
 
   # List of all modules packaged with this module
-  ModuleList        = @('aws.credentials.psm1')
+  # ModuleList = @()
 
   # List of all files packaged with this module
   # FileList = @()

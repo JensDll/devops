@@ -1,0 +1,25 @@
+name: Testing
+
+on:
+  pull_request:
+    branches:
+      - '**'
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  should-run:
+    uses: JensDll/should-run/.github/workflows/main.yaml@main
+    with:
+      projects: devop-tools/powershell
+
+  devop-tools-powershell:
+    if: fromJSON(needs.should-run.outputs.result)['devop-tools/powershell'] == 'true'
+    runs-on: ubuntu-latest
+    needs: should-run
+    steps:
+      - name: Checking out the repository
+        uses: actions/checkout@v3
+      - run: |
+          pwsh --version
