@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="22" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="4" invalid="0" date="2022-05-21" time="00:30:27">
+  <environment nunit-version="2.5.8.0" user-domain="JENS-PC" clr-version="Unknown" user="jens" platform="Microsoft Windows 11 Pro|C:\Windows|\Device\Harddisk0\Partition3" os-version="10.0.22000" machine-name="JENS-PC" cwd="C:\Users\jens\devops\powershell" />
+  <culture-info current-culture="en-GB" current-uiculture="en-GB" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Ignored" success="True" time="2.3941" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="C:\Users\jens\devops\powershell\tests\AwsCredentials.Tests.ps1" executed="True" result="Ignored" success="True" time="2.3941" asserts="0" description="C:\Users\jens\devops\powershell\tests\AwsCredentials.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="AwsCredentials" executed="True" result="Ignored" success="True" time="2.3074" asserts="0" description="AwsCredentials">
+            <results>
+              <test-suite type="TestFixture" name="AwsCredentials.Read-AwsCredentials" executed="True" result="Success" success="True" time="0.1239" asserts="0" description="AwsCredentials.Read-AwsCredentials">
+                <results>
+                  <test-case description="should read the credentials" name="AwsCredentials.Read-AwsCredentials.should read the credentials" time="0.0841" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="fail if user does not exist" name="AwsCredentials.Read-AwsCredentials.fail if user does not exist" time="0.0377" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="AwsCredentials.New-AwsCredentials" executed="True" result="Ignored" success="True" time="2.3057" asserts="0" description="AwsCredentials.New-AwsCredentials">
+                <results>
+                  <test-suite type="TestFixture" name="AwsCredentials.New-AwsCredentials.With existing credentials file (True)" executed="True" result="Ignored" success="True" time="1.0939" asserts="0" description="AwsCredentials.New-AwsCredentials.With existing credentials file (True)">
+                    <results>
+                      <test-suite type="TestFixture" name="AwsCredentials.New-AwsCredentials.With existing credentials file (True).With -Recreate (True)" executed="True" result="Ignored" success="True" time="0.4972" asserts="0" description="AwsCredentials.New-AwsCredentials.With existing credentials file (True).With -Recreate (True)">
+                        <results>
+                          <test-case description="call iam delete-access-key" name="AwsCredentials.New-AwsCredentials.With existing credentials file (True).With -Recreate (True).call iam delete-access-key" time="0.1355" asserts="0" success="True" result="Success" executed="True" />
+                          <test-case description="credentials file exists" name="AwsCredentials.New-AwsCredentials.With existing credentials file (True).With -Recreate (True).credentials file exists" time="0.1192" asserts="0" success="True" result="Success" executed="True" />
+                          <test-case description="call aws iam create-access-key" name="AwsCredentials.New-AwsCredentials.With existing credentials file (True).With -Recreate (True).call aws iam create-access-key" time="0.1213" asserts="0" success="True" result="Success" executed="True" />
+                          <test-case description="create new credentials" name="AwsCredentials.New-AwsCredentials.With existing credentials file (True).With -Recreate (True).create new credentials" time="0.1179" asserts="0" success="True" result="Success" executed="True" />
+                          <test-case description="fail if credentials already exist" name="AwsCredentials.New-AwsCredentials.With existing credentials file (&lt;exists&gt;).With -Recreate (&lt;withRecreate&gt;).fail if credentials already exist" time="0.0013" asserts="0" success="False" result="Ignored" executed="False" />
+                        </results>
+                      </test-suite>
+                      <test-suite type="TestFixture" name="AwsCredentials.New-AwsCredentials.With existing credentials file (True).With -Recreate (False)" executed="True" result="Ignored" success="True" time="1.0922" asserts="0" description="AwsCredentials.New-AwsCredentials.With existing credentials file (True).With -Recreate (False)">
+                        <results>
+                          <test-case description="call iam delete-access-key" name="AwsCredentials.New-AwsCredentials.With existing credentials file (&lt;exists&gt;).With -Recreate (&lt;withRecreate&gt;).call iam delete-access-key" time="0.0019" asserts="0" success="False" result="Ignored" executed="False" />
+                          <test-case description="credentials file exists" name="AwsCredentials.New-AwsCredentials.With existing credentials file (True).With -Recreate (False).credentials file exists" time="0.1383" asserts="0" success="True" result="Success" executed="True" />
+                          <test-case description="call aws iam create-access-key" name="AwsCredentials.New-AwsCredentials.With existing credentials file (True).With -Recreate (False).call aws iam create-access-key" time="0.1381" asserts="0" success="True" result="Success" executed="True" />
+                          <test-case description="create new credentials" name="AwsCredentials.New-AwsCredentials.With existing credentials file (True).With -Recreate (False).create new credentials" time="0.1372" asserts="0" success="True" result="Success" executed="True" />
+                          <test-case description="fail if credentials already exist" name="AwsCredentials.New-AwsCredentials.With existing credentials file (True).With -Recreate (False).fail if credentials already exist" time="0.1771" asserts="0" success="True" result="Success" executed="True" />
+                        </results>
+                      </test-suite>
+                    </results>
+                  </test-suite>
+                  <test-suite type="TestFixture" name="AwsCredentials.New-AwsCredentials.With existing credentials file (False)" executed="True" result="Ignored" success="True" time="2.1802" asserts="0" description="AwsCredentials.New-AwsCredentials.With existing credentials file (False)">
+                    <results>
+                      <test-suite type="TestFixture" name="AwsCredentials.New-AwsCredentials.With existing credentials file (False).With -Recreate (True)" executed="True" result="Ignored" success="True" time="0.5006" asserts="0" description="AwsCredentials.New-AwsCredentials.With existing credentials file (False).With -Recreate (True)">
+                        <results>
+                          <test-case description="call iam delete-access-key" name="AwsCredentials.New-AwsCredentials.With existing credentials file (False).With -Recreate (True).call iam delete-access-key" time="0.14" asserts="0" success="True" result="Success" executed="True" />
+                          <test-case description="credentials file exists" name="AwsCredentials.New-AwsCredentials.With existing credentials file (False).With -Recreate (True).credentials file exists" time="0.1191" asserts="0" success="True" result="Success" executed="True" />
+                          <test-case description="call aws iam create-access-key" name="AwsCredentials.New-AwsCredentials.With existing credentials file (False).With -Recreate (True).call aws iam create-access-key" time="0.1188" asserts="0" success="True" result="Success" executed="True" />
+                          <test-case description="create new credentials" name="AwsCredentials.New-AwsCredentials.With existing credentials file (False).With -Recreate (True).create new credentials" time="0.119" asserts="0" success="True" result="Success" executed="True" />
+                          <test-case description="fail if credentials already exist" name="AwsCredentials.New-AwsCredentials.With existing credentials file (&lt;exists&gt;).With -Recreate (&lt;withRecreate&gt;).fail if credentials already exist" time="0.0015" asserts="0" success="False" result="Ignored" executed="False" />
+                        </results>
+                      </test-suite>
+                      <test-suite type="TestFixture" name="AwsCredentials.New-AwsCredentials.With existing credentials file (False).With -Recreate (False)" executed="True" result="Ignored" success="True" time="1.0781" asserts="0" description="AwsCredentials.New-AwsCredentials.With existing credentials file (False).With -Recreate (False)">
+                        <results>
+                          <test-case description="call iam delete-access-key" name="AwsCredentials.New-AwsCredentials.With existing credentials file (&lt;exists&gt;).With -Recreate (&lt;withRecreate&gt;).call iam delete-access-key" time="0.0018" asserts="0" success="False" result="Ignored" executed="False" />
+                          <test-case description="credentials file exists" name="AwsCredentials.New-AwsCredentials.With existing credentials file (False).With -Recreate (False).credentials file exists" time="0.138" asserts="0" success="True" result="Success" executed="True" />
+                          <test-case description="call aws iam create-access-key" name="AwsCredentials.New-AwsCredentials.With existing credentials file (False).With -Recreate (False).call aws iam create-access-key" time="0.1346" asserts="0" success="True" result="Success" executed="True" />
+                          <test-case description="create new credentials" name="AwsCredentials.New-AwsCredentials.With existing credentials file (False).With -Recreate (False).create new credentials" time="0.1397" asserts="0" success="True" result="Success" executed="True" />
+                          <test-case description="fail if credentials already exist" name="AwsCredentials.New-AwsCredentials.With existing credentials file (False).With -Recreate (False).fail if credentials already exist" time="0.1614" asserts="0" success="True" result="Success" executed="True" />
+                        </results>
+                      </test-suite>
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

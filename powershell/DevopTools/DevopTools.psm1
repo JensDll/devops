@@ -1,6 +1,6 @@
 ﻿. $PSScriptRoot\AwsCredentials.ps1
 
-$exportModuleMemberParams = @{
+$export = @{
   Function = $(
     'New-AwsCredentials',
     'Read-AwsCredentials',
@@ -8,4 +8,4 @@ $exportModuleMemberParams = @{
   )
 }
 
-Export-ModuleMember @exportModuleMemberParams
+Export-ModuleMember @export
