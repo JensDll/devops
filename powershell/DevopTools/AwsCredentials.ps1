@@ -5,7 +5,7 @@
 Creates new AWS credentials for the specified user.
 
 .DESCRIPTION
-Creates new AWS credentials for the specified user. Credentials are stored to the file system.
+Creates new AWS credentials for the specified user and stores them to the file system.
 
 .PARAMETER UserName
 The user name to create credentials for.
@@ -47,6 +47,16 @@ function New-AwsCredentials {
   Write-AwsCredentials $UserName
 }
 
+<#
+.SYNOPSIS
+Reads extsisting AWS credentials for the specified user.
+
+.DESCRIPTION
+Reads extsisting AWS credentials for the specified user.
+
+.PARAMETER UserName
+The user name name to read the credentials for.
+#>
 function Read-AwsCredentials {
   [CmdletBinding()]
   param(
@@ -68,6 +78,16 @@ function Read-AwsCredentials {
   }
 }
 
+<#
+.SYNOPSIS
+Read extsisting AWS credentials for the specified user.
+
+.DESCRIPTION
+Read extsisting AWS credentials for the specified user.
+
+.PARAMETER UserName
+The user name to read the credentials for.
+#>
 function Remove-AwsCredentials {
   [CmdletBinding()]
   param(
