@@ -2,8 +2,6 @@
   [switch]$AsAdmin
 )
 
-Get-ChildItem Env:
-
 Import-Module "$PSScriptRoot\DevopTools" -Force -Function 'Invoke-Privileged'
 
 If ($AsAdmin) {

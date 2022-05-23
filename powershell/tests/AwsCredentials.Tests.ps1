@@ -2,7 +2,7 @@
   Import-Module $PSScriptRoot\..\DevopTools -Force
 }
 
-Describe 'AwsCredentials' {
+Describe 'AWSCredentials' {
   
   BeforeEach {
     $credentialsFilePath = "$([IO.Path]::GetTempPath())$([Guid]::NewGuid())-aws-credentials"
@@ -27,7 +27,7 @@ Describe 'AwsCredentials' {
     Mock Write-Error {} -ModuleName DevopTools
   }
     
-  Describe 'Read-AwsCredentials' {
+  Describe 'Read-AWSCredentials' {
     BeforeEach {
       # Arrange
       @'
@@ -39,7 +39,7 @@ Describe 'AwsCredentials' {
 
     It 'should read the credentials' {
       # Act
-      $credentials = Read-AwsCredentials -UserName 'TestUser'
+      $credentials = Read-AWSCredentials -UserName 'TestUser'
 
       # Assert
       $credentials.AccessKey | Should -Be 'access-key'
@@ -48,12 +48,12 @@ Describe 'AwsCredentials' {
 
     It 'fail if user does not exist' {
       # Act + Assert
-      { Read-AwsCredentials -UserName 'Invalid' } | Should -Throw
+      { Read-AWSCredentials -UserName 'Invalid' } | Should -Throw
       Should -Invoke -CommandName Write-Error -ModuleName DevopTools -Exactly -Times 1
     }
   }
     
-  Describe 'New-AwsCredentials' {
+  Describe 'New-AWSCredentials' {
     Describe 'With existing credentials file (<exists>)' -ForEach @(
       @{ exists = $true }
       @{ exists = $false }
@@ -69,8 +69,8 @@ Describe 'AwsCredentials' {
           }
 
           # Act
-          New-AwsCredentials -UserName 'TestUser' -Recreate:$withRecreate
-          $credentials = Read-AwsCredentials -UserName 'TestUser'
+          New-AWSCredentials -UserName 'TestUser' -Recreate:$withRecreate
+          $credentials = Read-AWSCredentials -UserName 'TestUser'
         }
 
         # Assert ...
@@ -96,7 +96,7 @@ Describe 'AwsCredentials' {
         }
 
         it -Skip:$withRecreate 'fail if credentials already exist' {
-          { New-AwsCredentials -UserName 'TestUser' } | Should -Throw
+          { New-AWSCredentials -UserName 'TestUser' } | Should -Throw
           Should -Invoke -CommandName Write-Error -ModuleName DevopTools -Exactly -Times 1
         }
       }

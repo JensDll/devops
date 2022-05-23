@@ -12,11 +12,5 @@ Describe 'Admin' {
     It 'return <IsAdmin>' {
       Test-Admin | Should -Be $IsAdmin
     }
-
-
-  }
-
-  It 'Fail' {
-    $false | Should -Be $true
   }
 }

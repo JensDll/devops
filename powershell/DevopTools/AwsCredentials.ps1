@@ -1,4 +1,6 @@
-﻿$credentialsFilePath = "$env:USERPROFILE\.devop-tools\aws-credentials"
+﻿Import-Module $PSScriptRoot\Utils.psm1
+
+$credentialsFilePath = "$ConfigPath\aws-credentials"
 
 <#
 .SYNOPSIS
@@ -13,7 +15,7 @@ The user name to create credentials for.
 .PARAMETER Recreate
 Delete the existing credentials if they exist and recreate them.
 #>
-function New-AwsCredentials {
+function New-AWSCredentials {
   [CmdletBinding()]
   param(
     [Parameter(Mandatory)]
@@ -37,14 +39,14 @@ function New-AwsCredentials {
   } else {
     if (Test-AwsCredentials $UserName) {
       Write-Error "User '$UserName' already has cached credentials. Pass -Recreate to recreate them."
-      Get-Help New-AwsCredentials -Parameter Recreate
+      Get-Help New-AWSCredentials -Parameter Recreate
       throw
     }
 
     Write-Verbose "Creating new AWS credentials for user '$UserName'"
   }
 
-  Write-AwsCredentials $UserName
+  Write-AWSCredentials $UserName
 }
 
 <#
@@ -57,7 +59,7 @@ Reads extsisting AWS credentials for the specified user.
 .PARAMETER UserName
 The user name name to read the credentials for.
 #>
-function Read-AwsCredentials {
+function Read-AWSCredentials {
   [CmdletBinding()]
   param(
     [Parameter(Mandatory)]
@@ -88,7 +90,7 @@ Read extsisting AWS credentials for the specified user.
 .PARAMETER UserName
 The user name to read the credentials for.
 #>
-function Remove-AwsCredentials {
+function Remove-AWSCredentials {
   [CmdletBinding()]
   param(
     [Parameter(Mandatory)]
@@ -98,7 +100,7 @@ function Remove-AwsCredentials {
   git config --file $credentialsFilePath --remove-section $UserName
 }
 
-function Write-AwsCredentials {
+function Write-AWSCredentials {
   param(
     [Parameter(Mandatory)]
     [string]$UserName
