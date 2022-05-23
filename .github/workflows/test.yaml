@@ -16,26 +16,16 @@ jobs:
     if: fromJSON(needs.should-run.outputs.result)['powershell'] == 'true'
     runs-on: windows-latest
     needs: should-run
+    strategy:
+      matrix:
+        as_admin: [true, false]
     defaults:
       run:
+        shell: pwsh
         working-directory: powershell
     steps:
       - name: Checking out the repository
         uses: actions/checkout@v3
 
-      - name: Running tests
-        run: pwsh .\pester.ps1
-
-  powershell-devop-tools-admin:
-    if: fromJSON(needs.should-run.outputs.result)['powershell'] == 'true'
-    runs-on: windows-latest
-    needs: should-run
-    defaults:
-      run:
-        working-directory: powershell
-    steps:
-      - name: Checking out the repository
-        uses: actions/checkout@v3
-
-      - name: Running tests
-        run: pwsh .\pester.ps1 -AsAdmin
+      - name: Running tests (admin = ${{ matrix.as_admin }})
+        run: .\pester.ps1 -AsAdmin:${{ matrix.as_admin }}

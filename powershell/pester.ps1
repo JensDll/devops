@@ -12,7 +12,7 @@ $config = New-PesterConfiguration
 
 $config.Run.Container = $(
   (New-PesterContainer -Path .\tests\AwsCredentials.Tests.ps1),
-  (New-PesterContainer -Path .\tests\Admin.Tests.ps1 -Data @{ IsAdmin = $false })
+  (New-PesterContainer -Path .\tests\Admin.Tests.ps1 -Data @{ IsAdmin = $AsAdmin })
 )
 
 $config.Output.Verbosity = 'Detailed'
