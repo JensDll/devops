@@ -2,6 +2,8 @@
   [switch]$AsAdmin
 )
 
+Get-ChildItem Env:
+
 Import-Module "$PSScriptRoot\DevopTools" -Force -Function 'Invoke-Privileged'
 
 If ($AsAdmin) {
@@ -14,6 +16,10 @@ $config.Run.Container = $(
   (New-PesterContainer -Path .\tests\AwsCredentials.Tests.ps1),
   (New-PesterContainer -Path .\tests\Admin.Tests.ps1 -Data @{ IsAdmin = $AsAdmin })
 )
+
+if ($Env:CI -eq 'true') {
+  $config.run.Throw = $true
+}
 
 $config.Output.Verbosity = 'Detailed'
 
