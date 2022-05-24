@@ -22,21 +22,32 @@
 
   # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
   FunctionsToExport = @(
+    # AWS
     'New-AWSCredentials',
     'Read-AWSCredentials',
     'Remove-AWSCredentials',
     
+    # Admin
     'Test-Admin',
     'Invoke-Privileged',
-    
-    'New-RootCA'
+
+    # TLS
+    'New-RootCA',
+    'Add-DNSEntries',
+    'Remove-DNSEntries',
+
+    # Utils
+    'ConvertTo-WSLPath'
   )
 
   # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
   CmdletsToExport   = @()
 
   # Variables to export from this module
-  VariablesToExport = $()
+  VariablesToExport = $(
+    # Utils
+    'WSLScriptRoot'
+  )
 
   # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
   AliasesToExport   = @()

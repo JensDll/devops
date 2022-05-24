@@ -1,4 +1,4 @@
-﻿Import-Module $PSScriptRoot\Utils.psm1
+﻿. $PSScriptRoot\Utils.ps1
 
 $credentialsFilePath = "$ConfigPath\aws-credentials"
 

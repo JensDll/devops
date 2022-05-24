@@ -2,16 +2,20 @@
   [switch]$AsAdmin
 )
 
-Import-Module "$PSScriptRoot\DevopTools" -Force -Function 'Invoke-Privileged'
+Import-Module "$PSScriptRoot\DevopTools" -Force
 
 If ($AsAdmin) {
   Invoke-Privileged -ArgumentList '-AsAdmin'
+
+  If (-not (Test-Admin)) {
+    return
+  }
 }
 
 $config = New-PesterConfiguration
 
 $config.Run.Container = $(
-  (New-PesterContainer -Path .\tests\AwsCredentials.Tests.ps1),
+  (New-PesterContainer -Path .\tests\AWSCredentials.Tests.ps1),
   (New-PesterContainer -Path .\tests\Admin.Tests.ps1 -Data @{ IsAdmin = $AsAdmin })
 )
 

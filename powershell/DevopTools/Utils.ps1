@@ -19,6 +19,4 @@
 }
 
 $WSLScriptRoot = ConvertTo-WSLPath $MyInvocation.PSScriptRoot
-$ConfigPath = Join-Path -Path (Resolve-Path '~') -ChildPath '.devop-tools'
-
-Export-ModuleMember -Function 'ConvertTo-WSLPath' -Variable 'WSLScriptRoot', 'ConfigPath' 
+$ConfigPath = Join-Path -Path (Resolve-Path '~') -ChildPath '.pwsh-devop-tools'
