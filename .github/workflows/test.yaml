@@ -25,4 +25,4 @@ jobs:
 
       - name: Running tests
         shell: pwsh
-        run: Invoke-Pester -Path ./tests/AWSCredentials.Tests.ps1 -Output Detailed
+        run: ./pester.ps1 -AsAdmin
