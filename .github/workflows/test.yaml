@@ -1,0 +1,28 @@
+name: Running tests
+
+on:
+  pull_request:
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  should-run:
+    uses: JensDll/should-run/.github/workflows/main.yaml@main
+    with:
+      projects: projects/DevopTools
+
+  devop-tools:
+    needs: should-run
+    if: fromJSON(needs.should-run.outputs.result)['projects/DevopTools'] == 'true'
+    defaults:
+      run:
+        working-directory: projects/DevopTools
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checking out the repository
+        uses: actions/checkout@v3
+
+      - name: Running tests
+        shell: pwsh
+        run: ./pester.ps1
