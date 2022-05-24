@@ -10,14 +10,14 @@ jobs:
   should-run:
     uses: JensDll/should-run/.github/workflows/main.yaml@main
     with:
-      projects: powershell
+      projects: projects/DevopTools
 
-  powershell-devop-tools:
+  devop-tools:
     needs: should-run
-    if: fromJSON(needs.should-run.outputs.result)['powershell'] == 'true'
+    if: fromJSON(needs.should-run.outputs.result)['projects/DevopTools'] == 'true'
     defaults:
       run:
-        working-directory: powershell
+        working-directory: projects/DevopTools
     runs-on: ubuntu-latest
     steps:
       - name: Checking out the repository

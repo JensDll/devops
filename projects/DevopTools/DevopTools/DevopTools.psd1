@@ -33,6 +33,8 @@
 
     # TLS
     'New-RootCA',
+
+    # DNS
     'Add-DNSEntries',
     'Remove-DNSEntries',
 
