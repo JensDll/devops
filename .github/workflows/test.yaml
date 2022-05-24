@@ -13,12 +13,12 @@ jobs:
       projects: powershell
 
   powershell-devop-tools:
-    if: fromJSON(needs.should-run.outputs.result)['powershell'] == 'true'
-    runs-on: ubuntu-latest
     needs: should-run
+    if: fromJSON(needs.should-run.outputs.result)['powershell'] == 'true'
     defaults:
       run:
         working-directory: powershell
+    runs-on: ubuntu-latest
     steps:
       - name: Checking out the repository
         uses: actions/checkout@v3

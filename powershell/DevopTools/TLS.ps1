@@ -59,16 +59,16 @@ function Add-DNSEntries() {
     [string[]]$SubDomains
   )
 
-  $IsVerbose = $PSBoundParameters.ContainsKey('Verbose')
+  $PSBoundParameters.Remove('SubDomains') > $null
 
-  Invoke-Privileged -FunctionName "Add-DNSEntries" -ArgumentList "-Domain $Domain", 
-  "-IPAddress $IPAddress", 
-  ($SubDomains ? "-SubDomains $($SubDomains -join ',')" : ''),
-  ($IsVerbose ? '-Verbose' : '')
+  Invoke-Privileged -Function 'Add-DNSEntries' @PSBoundParameters `
+  ( $SubDomains ? "-SubDomains $($SubDomains -join ',')" : '')
 
   if (-not (Test-Admin)) {
     return
   }
+
+  $isVerbose = $PSBoundParameters['Verbose'] -eq $true
 
   Remove-DNSEntries -Domain $Domain
 
@@ -84,7 +84,7 @@ function Add-DNSEntries() {
 
   Add-Content -Path $hostFilePath -Value $entries -NoNewline
   
-  if ($IsVerbose) {
+  if ($isVerbose) {
     Get-Content $hostFilePath -Raw
     Write-Verbose 'Done ... Press Enter to exit:'
     Read-Host > $null
@@ -92,20 +92,20 @@ function Add-DNSEntries() {
 }
 
 function Remove-DNSEntries() {
+  [CmdletBinding()]
   param(
     [Parameter(Mandatory)]
     [string]$Domain
   )
 
-  $IsVerbose = $PSBoundParameters.ContainsKey('Verbose')
-
-  Invoke-Privileged -FunctionName 'Remove-DNSEntries' -ArgumentList "-Domain $Domain",
-  ($IsVerbose ? '-Verbose' : '')
-
+  Invoke-Privileged -Function 'Remove-DNSEntries' @PSBoundParameters
+  
   if (-not (Test-Admin)) {
     return
   }
-
+  
+  $isVerbose = $PSBoundParameters['Verbose'] -eq $true
+  
   $lines = @()
 
   foreach ($line in Get-Content $hostFilePath) {
@@ -116,7 +116,7 @@ function Remove-DNSEntries() {
 
   $lines | Out-File $hostFilePath
 
-  if ($IsVerbose) {
+  if ($isVerbose) {
     Get-Content $hostFilePath -Raw
     Write-Verbose 'Done ... Press Enter to exit:'
     Read-Host > $null

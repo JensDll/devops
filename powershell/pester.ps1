@@ -2,7 +2,7 @@
   [switch]$AsAdmin
 )
 
-Import-Module "$PSScriptRoot\DevopTools" -Force
+Import-Module $PSScriptRoot\DevopTools -Force -Function 'Invoke-Privileged', 'Test-Admin'
 
 If ($AsAdmin -and $IsWindows) {
   Invoke-Privileged -ArgumentList '-AsAdmin'

@@ -8,22 +8,31 @@ function Test-Admin() {
 }
 
 function Invoke-Privileged() {
+  [CmdletBinding()]
   param (
-    [string[]]$ArgumentList,
-    [switch]$LeaveOpen,
-    [string]$FunctionName
+    [string]$Function,
+    [Parameter(ValueFromRemainingArguments)]
+    [string]$Arguments
   )
 
   if ((Test-Admin) -or -not $IsWindows) {
     return
   }
 
-  if ($FunctionName) {
-    Start-Process -FilePath 'pwsh' -Verb RunAs -ArgumentList ($LeaveOpen ? '--noexit' : ''),
-    "-Command `"& { . $($MyInvocation.PSCommandPath); $FunctionName $ArgumentList }`""
+  $isVerbose = $PSBoundParameters['Verbose'] -eq $true
+  $isDebug = $PSBoundParameters['Debug'] -eq $true
+
+  $PSBoundParameters.Remove('Function') > $null
+  $PSBoundParameters.Remove('Verbose') > $null
+  $PSBoundParameters.Remove('Debug') > $null
+  $PSBoundParameters.Remove('Arguments') > $null
+
+  $boundArgs = ($PSBoundParameters.GetEnumerator() | ForEach-Object { "-$($_.Key) $($_.Value)" }) -join ' '
+
+  if ($Function) {
+    Start-Process -FilePath 'pwsh' -Verb RunAs -ArgumentList '-Command', ". $($MyInvocation.PSCommandPath); $Function $boundArgs $Arguments",
+    ($isVerbose ? '-Verbose' : ''), ($isDebug ? '-Debug' : '')
   } else {
-    Start-Process -FilePath 'pwsh' -Verb RunAs -ArgumentList ($LeaveOpen ? '--noexit' : ''),
-    $MyInvocation.PSCommandPath,
-    "$ArgumentList"
+    Start-Process -FilePath 'pwsh' -Verb 'RunAs' -ArgumentList $MyInvocation.PSCommandPath
   }
 }

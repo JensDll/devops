@@ -4,7 +4,7 @@
 )
 
 BeforeAll {
-  Import-Module (Resolve-Path $PSScriptRoot\..\DevopTools\DevopTools.psm1) -Force
+  Import-Module $PSScriptRoot\..\DevopTools -Force
 }
 
 Describe 'Admin' {
