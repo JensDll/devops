@@ -1,5 +1,5 @@
 ﻿BeforeAll {
-  Import-Module $PSScriptRoot\..\DevopTools -Force
+  Import-Module $PSScriptRoot\..\DevOpTools -Force
 }
 
 Describe 'AWSCredentials' {

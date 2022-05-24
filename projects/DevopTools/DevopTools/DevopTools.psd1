@@ -1,9 +1,9 @@
 @{
   # Script module or binary module file associated with this manifest.
-  RootModule        = 'DevopTools.psm1'
+  RootModule        = 'DevOpTools.psm1'
 
   # Version number of this module.
-  ModuleVersion     = '0.0.1'
+  ModuleVersion     = '0.0.0'
 
   # ID used to uniquely identify this module
   GUID              = '0d0e7a69-7247-4979-a599-73850459367e'
@@ -15,7 +15,7 @@
   Copyright         = 'Copyright (c) 2022 Jens Döllmann'
 
   # Description of the functionality provided by this module
-  Description       = 'Devop tools for PowerShell'
+  Description       = 'PowerShell DevOp tools. Some cmdlets for development.'
 
   # Minimum version of the PowerShell engine required by this module
   PowerShellVersion = '5.0'
