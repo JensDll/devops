@@ -4,7 +4,7 @@
 
 Import-Module "$PSScriptRoot\DevopTools" -Force
 
-If ($AsAdmin) {
+If ($AsAdmin -and $IsWindows) {
   Invoke-Privileged -ArgumentList '-AsAdmin'
 
   If (-not (Test-Admin)) {

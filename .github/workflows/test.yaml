@@ -14,15 +14,14 @@ jobs:
 
   powershell-devop-tools:
     if: fromJSON(needs.should-run.outputs.result)['powershell'] == 'true'
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     needs: should-run
     defaults:
       run:
-        shell: pwsh
         working-directory: powershell
     steps:
       - name: Checking out the repository
         uses: actions/checkout@v3
 
       - name: Running tests
-        run: .\pester.ps1 -AsAdmin
+        run: pwsh ./pester.ps1 -AsAdmin

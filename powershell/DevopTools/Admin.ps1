@@ -14,7 +14,7 @@ function Invoke-Privileged() {
     [string]$FunctionName
   )
 
-  if (Test-Admin) {
+  if ((Test-Admin) -or -not $IsWindows) {
     return
   }
 
