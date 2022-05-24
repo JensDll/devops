@@ -22,10 +22,10 @@ function Invoke-Privileged() {
   $isVerbose = $PSBoundParameters['Verbose'] -eq $true
   $isDebug = $PSBoundParameters['Debug'] -eq $true
 
-  $PSBoundParameters.Remove('Function') > $null
-  $PSBoundParameters.Remove('Verbose') > $null
-  $PSBoundParameters.Remove('Debug') > $null
-  $PSBoundParameters.Remove('Arguments') > $null
+  $PSBoundParameters.Remove('Function') 1> $null
+  $PSBoundParameters.Remove('Verbose') 1> $null
+  $PSBoundParameters.Remove('Debug') 1> $null
+  $PSBoundParameters.Remove('Arguments') 1> $null
 
   $boundArgs = ($PSBoundParameters.GetEnumerator() | ForEach-Object { "-$($_.Key) $($_.Value)" }) -join ' '
 

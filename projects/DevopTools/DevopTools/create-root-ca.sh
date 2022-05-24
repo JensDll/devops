@@ -9,7 +9,7 @@ __usage()
 {
   echo "Usage: $(basename "${BASH_SOURCE[0]}") [options]
 Options:
-    --domian | -p       The domain name to use for the certificate.
+    --domain | -d       The domain name to use for the certificate.
     --home              The path where CA related resources are stored.
 "
 
@@ -68,6 +68,6 @@ openssl ca -selfsign \
 openssl pkcs12 -export \
   -in "$CA_HOME/certs/tls.crt" \
   -inkey "$CA_HOME/private/tls.key" \
-  -name "Powershell devop tools development certificate" \
+  -name "DevopTools development certificate" \
   -out "$CA_HOME/certs/tls.p12" \
   -password "pass:"

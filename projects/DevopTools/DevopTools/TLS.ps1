@@ -1,5 +1,4 @@
 ﻿. $PSScriptRoot\Utils.ps1
-. $PSScriptRoot\Admin.ps1
 
 $caHome = "$ConfigPath\root-ca"
 $caHomeWSL = ConvertTo-WSLPath $caHome
@@ -21,7 +20,7 @@ function New-RootCA() {
   if ($cert) {
     Write-Verbose 'Using existing certificate'
   
-    $password = New-Object System.Security.SecureString
+    $password = [System.Security.SecureString]::new()
   
     Export-PfxCertificate -Cert $cert -FilePath "$caHome\certs\tls.p12" -Password $password 1> $null
   

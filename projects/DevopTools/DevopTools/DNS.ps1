@@ -39,7 +39,7 @@ function Add-DNSEntries() {
   if ($isVerbose) {
     Get-Content $hostFilePath -Raw
     Write-Verbose 'Done ... Press Enter to exit:'
-    Read-Host > $null
+    Read-Host 1> $null
   }
 }
 
@@ -71,6 +71,6 @@ function Remove-DNSEntries() {
   if ($isVerbose) {
     Get-Content $hostFilePath -Raw
     Write-Verbose 'Done ... Press Enter to exit:'
-    Read-Host > $null
+    Read-Host 1> $null
   }
 }
