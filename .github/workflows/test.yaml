@@ -25,4 +25,4 @@ jobs:
 
       - name: Running tests
         shell: pwsh
-        run: ./pester.ps1 -AsAdmin
+        run: ./pester.ps1
