@@ -30,7 +30,7 @@ function Invoke-Privileged() {
   $boundArgs = ($PSBoundParameters.GetEnumerator() | ForEach-Object { "-$($_.Key) $($_.Value)" }) -join ' '
 
   if ($Function) {
-    Start-Process -FilePath 'pwsh' -Verb RunAs -ArgumentList '-Command', ". $($MyInvocation.PSCommandPath); $Function $boundArgs $Arguments",
+    Start-Process -FilePath 'pwsh' -Verb 'RunAs' -ArgumentList '-Command', ". $($MyInvocation.PSCommandPath); $Function $boundArgs $Arguments",
     ($isVerbose ? '-Verbose' : ''), ($isDebug ? '-Debug' : '')
   } else {
     Start-Process -FilePath 'pwsh' -Verb 'RunAs' -ArgumentList $MyInvocation.PSCommandPath
