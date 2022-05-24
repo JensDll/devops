@@ -3,7 +3,7 @@
   RootModule        = 'DevOpTools.psm1'
 
   # Version number of this module.
-  ModuleVersion     = '0.0.0'
+  ModuleVersion     = '0.0.1'
 
   # ID used to uniquely identify this module
   GUID              = '0d0e7a69-7247-4979-a599-73850459367e'
@@ -44,12 +44,6 @@
 
   # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
   CmdletsToExport   = @()
-
-  # Variables to export from this module
-  VariablesToExport = $(
-    # Utils
-    'WSLScriptRoot'
-  )
 
   # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
   AliasesToExport   = @()
