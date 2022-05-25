@@ -2,10 +2,10 @@
   [switch]$AsAdmin
 )
 
-Import-Module $PSScriptRoot\DevopTools -Force -Function 'Invoke-Privileged', 'Test-Admin'
+Import-Module $PSScriptRoot\DevOpTools -Force -Function 'Invoke-Privileged', 'Test-Admin'
 
 If ($AsAdmin -and $IsWindows) {
-  Invoke-Privileged -ArgumentList '-AsAdmin'
+  Invoke-Privileged -NoExit -AsAdmin
 
   If (-not (Test-Admin)) {
     return
