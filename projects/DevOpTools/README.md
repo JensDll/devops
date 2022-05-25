@@ -1,3 +1,3 @@
-# Devop Tools
+# Powershell DevOp Tools
 
-Powershell utility cmdlets for DevOps.
+Some cmdlets helping in development.
