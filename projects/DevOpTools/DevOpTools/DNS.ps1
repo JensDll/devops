@@ -4,7 +4,7 @@
 .DESCRIPTION
 Add new host entries to the system's hosts file.
 
-.PARAMETER Function
+.PARAMETER IPAddress
 The IP address to resolve.
 
 .PARAMETER Domain
@@ -58,7 +58,7 @@ function Add-DNSEntries() {
 
 <#
 .DESCRIPTION
-Remove host entries from the system's hosts file.
+Remove previously added host entries from the system's hosts file.
 
 .PARAMETER Domain
 Remove entries for this domain. But only if Add-DNSEntries previously added them.
