@@ -10,7 +10,7 @@ The IP address to resolve.
 .PARAMETER Domain
 The domain for which to resolve the IP address.
 
-.PARAMETER SubDomains
+.PARAMETER Subdomains
 Any number of subdomains.
 #>
 function Add-DNSEntries() {
@@ -21,13 +21,13 @@ function Add-DNSEntries() {
     [Parameter(Mandatory, Position = 1)]
     [string]$Domain,
     [Parameter(Position = 2)]
-    [string[]]$SubDomains
+    [string[]]$Subdomains
   )
 
   $PSBoundParameters.Remove('SubDomains') > $null
 
   Invoke-Privileged -Function 'Add-DNSEntries' @PSBoundParameters `
-  ( $SubDomains ? "-SubDomains $($SubDomains -join ',')" : '')
+  ( $Subdomains ? "-SubDomains $($Subdomains -join ',')" : '')
 
   if (-not (Test-Admin)) {
     return
@@ -43,8 +43,8 @@ function Add-DNSEntries() {
 
   $entries = ($hasNewlime ? '' : [System.Environment]::NewLine) + "$IPAddress $Domain # Added by PowerShell DevOp Tools"
 
-  foreach ($subDomain in $SubDomains) {
-    $entries += [System.Environment]::NewLine + "$IPAddress $subDomain.$Domain # Added by PowerShell DevOp Tools"
+  foreach ($subdomain in $Subdomains) {
+    $entries += [System.Environment]::NewLine + "$IPAddress $subdomain.$Domain # Added by PowerShell DevOp Tools"
   }
 
   Add-Content -Path $hostFilePath -Value $entries -NoNewline
@@ -66,7 +66,7 @@ Remove entries for this domain. But only if Add-DNSEntries previously added them
 function Remove-DNSEntries() {
   [CmdletBinding()]
   param(
-    [Parameter(Mandatory)]
+    [Parameter(Mandatory, Position = 0, ValueFromPipeline, ValueFromPipelineByPropertyName)]
     [string]$Domain
   )
 
