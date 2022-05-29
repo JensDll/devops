@@ -1,4 +1,11 @@
-﻿function ConvertTo-WSLPath {
+﻿<#
+.DESCRIPTION
+Convert a Windows path to an equivalent WSL mount path.
+
+.PARAMETER Path
+The Windows path to convert.
+#>
+function ConvertTo-WSLPath {
   [CmdletBinding()]
   param(
     [Parameter(Mandatory, Position = 0)]
