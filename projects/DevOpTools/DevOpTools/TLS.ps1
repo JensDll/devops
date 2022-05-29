@@ -7,10 +7,10 @@ $caHomeWSL = ConvertTo-WSLPath $caHome
 <#
 .DESCRIPTION
 Create a new root certificate authority for development and import it
-to the user's rootcertificate store.
+to the user's trusted root certificate store.
 
 .PARAMETER Domain
-The domain to which this certificate authority is allowed sign certificates.
+The domain for which this certificate authority is allowed to sign certificates.
 #>
 function New-RootCA() {
   [CmdletBinding()]
