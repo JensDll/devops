@@ -15,7 +15,7 @@ The domain for which this certificate authority is allowed to sign certificates.
 function New-RootCA() {
   [CmdletBinding()]
   param(
-    [Parameter(Mandatory)]
+    [Parameter(Mandatory, Position = 0)]
     [string]$Domain
   )
 
