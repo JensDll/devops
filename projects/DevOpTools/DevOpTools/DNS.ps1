@@ -1,5 +1,18 @@
 ﻿$hostFilePath = 'C:\Windows\System32\drivers\etc\hosts'
 
+<#
+.DESCRIPTION
+Add new host entries to the system's hosts file.
+
+.PARAMETER Function
+The IP address to resolve.
+
+.PARAMETER Domain
+The domain for which to resolve the IP address.
+
+.PARAMETER SubDomains
+Any number of subdomains.
+#>
 function Add-DNSEntries() {
   [CmdletBinding()]
   param(
@@ -28,10 +41,10 @@ function Add-DNSEntries() {
 
   $hasNewlime = (Get-Content $hostFilePath -Raw) -Match [System.Environment]::NewLine + '$'
 
-  $entries = ($hasNewlime ? '' : [System.Environment]::NewLine) + "$IPAddress $Domain # Added by powershell devop tools"
+  $entries = ($hasNewlime ? '' : [System.Environment]::NewLine) + "$IPAddress $Domain # Added by PowerShell DevOp Tools"
 
   foreach ($subDomain in $SubDomains) {
-    $entries += [System.Environment]::NewLine + "$IPAddress $subDomain.$Domain # Added by powershell devop tools"
+    $entries += [System.Environment]::NewLine + "$IPAddress $subDomain.$Domain # Added by PowerShell DevOp Tools"
   }
 
   Add-Content -Path $hostFilePath -Value $entries -NoNewline
@@ -43,6 +56,13 @@ function Add-DNSEntries() {
   }
 }
 
+<#
+.DESCRIPTION
+Remove host entries from the system's hosts file.
+
+.PARAMETER Domain
+Remove entries for this domain. But only if Add-DNSEntries previously added them.
+#>
 function Remove-DNSEntries() {
   [CmdletBinding()]
   param(
@@ -61,12 +81,12 @@ function Remove-DNSEntries() {
   $lines = @()
 
   foreach ($line in Get-Content $hostFilePath) {
-    if ($line -NotMatch "$Domain # Added by powershell devop tools") {
+    if ($line -NotMatch "$Domain # Added by PowerShell DevOp Tools") {
       $lines += $line
     }
   }
 
-  $lines | Out-File $hostFilePath
+  Set-Content -Path $hostFilePath -Value ($lines -join [System.Environment]::NewLine) -NoNewline
 
   if ($isVerbose) {
     Get-Content $hostFilePath -Raw

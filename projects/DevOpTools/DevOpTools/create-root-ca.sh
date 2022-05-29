@@ -68,6 +68,6 @@ openssl ca -selfsign \
 openssl pkcs12 -export \
   -in "$CA_HOME/certs/tls.crt" \
   -inkey "$CA_HOME/private/tls.key" \
-  -name "DevopTools development certificate" \
+  -name "PowerShell DevOpTools development certificate" \
   -out "$CA_HOME/certs/tls.p12" \
   -password "pass:"

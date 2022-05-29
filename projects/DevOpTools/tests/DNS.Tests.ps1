@@ -13,7 +13,7 @@ Describe 'DNS' {
     New-Item $hostFilePath -Force -ItemType File
 
     @"
-# Some comments
+# Some comment
 192.168.3.4 foo.com
 "@ | Out-File $hostFilePath
 
@@ -28,7 +28,7 @@ Describe 'DNS' {
       Add-DNSEntries -IPAddress 127.0.0.0 -Domain 'example.com' -SubDomains www, api
 
       # Assert
-      $hostFilePath | Should -FileContentMatchExactly '^# Some comments'
+      $hostFilePath | Should -FileContentMatchExactly '^# Some comment'
       $hostFilePath | Should -FileContentMatchExactly '^192.168.3.4 foo.com'
       $hostFilePath | Should -FileContentMatchExactly '^127.0.0.0 example.com'
       $hostFilePath | Should -FileContentMatchExactly '^127.0.0.0 www.example.com'
@@ -43,7 +43,7 @@ Describe 'DNS' {
       Add-DNSEntries -IPAddress 127.0.0.0 -Domain 'example.com' -SubDomains www, api
 
       # Assert
-      $hostFilePath | Should -FileContentMatchExactly '^# Some comments'
+      $hostFilePath | Should -FileContentMatchExactly '^# Some comment'
       $hostFilePath | Should -FileContentMatchExactly '^192.168.3.4 foo.com'
       $hostFilePath | Should -FileContentMatchExactly '^127.0.0.0 example.com'
       $hostFilePath | Should -FileContentMatchExactly '^127.0.0.0 www.example.com'
@@ -61,7 +61,7 @@ Describe 'DNS' {
       Remove-DNSEntries -Domain 'example.com'
 
       # Assert
-      $hostFilePath | Should -FileContentMatchExactly '^# Some comments'
+      $hostFilePath | Should -FileContentMatchExactly '^# Some comment'
       $hostFilePath | Should -FileContentMatchExactly '^192.168.3.4 foo.com'
       $hostFilePath | Should -Not -FileContentMatchExactly '^127.0.0.0 example.com'
       $hostFilePath | Should -Not -FileContentMatchExactly '^127.0.0.0 www.example.com'
@@ -79,7 +79,7 @@ Describe 'DNS' {
       Remove-DNSEntries -Domain 'example.com'
       
       # Assert
-      $hostFilePath | Should -FileContentMatchExactly '^# Some comments'
+      $hostFilePath | Should -FileContentMatchExactly '^# Some comment'
       $hostFilePath | Should -FileContentMatchExactly '^192.168.3.4 foo.com'
       $hostFilePath | Should -Not -FileContentMatchExactly '^127.0.0.0 example.com'
       $hostFilePath | Should -Not -FileContentMatchExactly '^127.0.0.0 www.example.com'

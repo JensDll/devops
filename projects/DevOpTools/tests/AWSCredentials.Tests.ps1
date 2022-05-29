@@ -3,7 +3,6 @@
 }
 
 Describe 'AWSCredentials' {
-  
   BeforeEach {
     $credentialsFilePath = "$([IO.Path]::GetTempPath())$([Guid]::NewGuid())-aws-credentials"
 
@@ -73,7 +72,7 @@ Describe 'AWSCredentials' {
           $credentials = Read-AWSCredentials -UserName 'TestUser'
         }
 
-        # Assert ...
+        # Assert
         it -Skip:(-not $withRecreate) 'call iam delete-access-key' {
           Should -Invoke -CommandName 'aws' -ModuleName DevopTools -Exactly -Times 1 `
             -ParameterFilter { "$args" -match 'iam delete-access-key.+--access-key-id access-key-1' }
