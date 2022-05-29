@@ -3,7 +3,6 @@
 $caHome = "$ConfigPath\root-ca"
 $caHomeWSL = ConvertTo-WSLPath $caHome
 
-
 <#
 .DESCRIPTION
 Create a new root certificate authority for development and import it
