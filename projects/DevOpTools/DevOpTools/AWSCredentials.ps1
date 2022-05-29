@@ -55,7 +55,7 @@ function Read-AWSCredentials {
     [string]$UserName
   )
 
-  if (-not (Test-AwsCredentials $UserName)) {
+  if (-not (Test-AWSCredentials $UserName)) {
     Write-Error "Crendentials not found for user '$UserName'"
     throw
   }
